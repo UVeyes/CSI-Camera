@@ -35,11 +35,11 @@ def read_camera(csi_camera,display_fps):
     return camera_image
 
 # Good for SENSOR_MODE_1080
-DISPLAY_WIDTH=240
-DISPLAY_HEIGHT=135
+#DISPLAY_WIDTH=240
+#DISPLAY_HEIGHT=135
 # For 1920x1080
-#DISPLAY_WIDTH=960
-#DISPLAY_HEIGHT=540
+DISPLAY_WIDTH=960
+DISPLAY_HEIGHT=540
 
 # 4032x3040, 30 fps
 SENSOR_MODE_4K3K=0
@@ -52,6 +52,10 @@ def start_cameras():
     left_camera.create_gstreamer_pipeline(
             sensor_id=0,
             sensor_mode=SENSOR_MODE_1080,
+            exposure_low=683709000,
+            exposure_high=683709000,
+            gain_low=1,
+            gain_high=1,
             framerate=30,
             flip_method=2,
             display_height=DISPLAY_HEIGHT,
@@ -64,6 +68,10 @@ def start_cameras():
     right_camera.create_gstreamer_pipeline(
             sensor_id=1,
             sensor_mode=SENSOR_MODE_1080,
+            exposure_low=13000,
+            exposure_high=683709000,
+            gain_low=1,
+            gain_high=22.25,
             framerate=30,
             flip_method=2,
             display_height=DISPLAY_HEIGHT,

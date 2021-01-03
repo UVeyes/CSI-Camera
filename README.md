@@ -1,3 +1,8 @@
+#Notes:
+use to list the supported properties:
+gst-inspect-1.0 nvarguscamerasrc
+
+
 # CSI-Camera
 Simple example of using a MIPI-CSI(2) Camera (like the Raspberry Pi Version 2 camera) with the NVIDIA Jetson Nano Developer Kit. This is support code for the article on JetsonHacks: https://wp.me/p7ZgI9-19v
 

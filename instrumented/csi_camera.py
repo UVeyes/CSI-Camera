@@ -118,13 +118,18 @@ class CSI_Camera:
         self,
         sensor_id=0,
         sensor_mode=3,
+        exposure_low=5000000,
+        exposure_high=5000000,
+        gain_low=1,
+        gain_high=1,
         display_width=1280,
         display_height=720,
         framerate=60,
         flip_method=0,
     ):
+    #wbmode=0 awblock=true aelock=true
         self._gstreamer_pipeline = (
-            "nvarguscamerasrc sensor-id=%d sensor-mode=%d ! "
+            "nvarguscamerasrc wbmode=0 awblock=true aelock=true sensor-id=%d sensor-mode=%d exposuretimerange=\"%d %d\" gainrange=\"%d %d\" ispdigitalgainrange=\"1 1\" aeantibanding=0 ! "
             "video/x-raw(memory:NVMM), "
             "format=(string)NV12, framerate=(fraction)%d/1 ! "
             "nvvidconv flip-method=%d ! "
@@ -134,6 +139,10 @@ class CSI_Camera:
             % (
                 sensor_id,
                 sensor_mode,
+                exposure_low,
+                exposure_high,
+                gain_low,
+                gain_high,
                 framerate,
                 flip_method,
                 display_width,
