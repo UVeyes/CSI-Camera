@@ -1,0 +1,4 @@
+GST_ARGUS: Available Sensor modes :
+GST_ARGUS: 4032 x 3040 FR = 29.999999 fps Duration = 33333334 ; Analog Gain range min 1.000000, max 22.250000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1920 x 1080 FR = 59.999999 fps Duration = 16666667 ; Analog Gain range min 1.000000, max 22.250000; Exposure Range min 13000, max 683709000;
