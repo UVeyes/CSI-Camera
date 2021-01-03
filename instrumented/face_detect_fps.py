@@ -36,15 +36,16 @@ def start_counting_fps():
     fps_timer.start()
 
 def gstreamer_pipeline(
+    sensor_id=1,
     capture_width=3280,
     capture_height=2464,
-    display_width=820,
-    display_height=616,
+    display_width=420,
+    display_height=316,
     framerate=21,
-    flip_method=0,
+    flip_method=2,
 ):
     return (
-        "nvarguscamerasrc ! "
+        "nvarguscamerasrc sensor-id=%d ! "
         "video/x-raw(memory:NVMM), "
         "width=(int)%d, height=(int)%d, "
         "format=(string)NV12, framerate=(fraction)%d/1 ! "
@@ -53,6 +54,7 @@ def gstreamer_pipeline(
         "videoconvert ! "
         "video/x-raw, format=(string)BGR ! appsink"
         % (
+            sensor_id,
             capture_width,
             capture_height,
             framerate,
@@ -103,7 +105,7 @@ def face_detect():
                     
                 print("Elapsed time: "+str(measure.elapsed))
                 frames_displayed = frames_displayed+1
-                keyCode = cv2.waitKey(10) & 0xFF
+                keyCode = cv2.waitKey(1) & 0xFF
                 # Stop the program on the ESC key
                 if keyCode == 27:
                     break

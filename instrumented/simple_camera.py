@@ -15,15 +15,17 @@ from timecontext import Timer
 
 
 def gstreamer_pipeline(
-    capture_width=1280,
-    capture_height=720,
-    display_width=1280,
-    display_height=720,
-    framerate=60,
+    sensor_id=1,
+    sensor_mode=0,
+    capture_width=480,
+    capture_height=270,
+    display_width=240,
+    display_height=135,
+    framerate=30,
     flip_method=0,
 ):
     return (
-        "nvarguscamerasrc ! "
+        "nvarguscamerasrc sensor-id=%d sensor-mode=%d ! "
         "video/x-raw(memory:NVMM), "
         "width=(int)%d, height=(int)%d, "
         "format=(string)NV12, framerate=(fraction)%d/1 ! "
@@ -32,6 +34,8 @@ def gstreamer_pipeline(
         "videoconvert ! "
         "video/x-raw, format=(string)BGR ! appsink"
         % (
+            sensor_id,
+            sensor_mode,
             capture_width,
             capture_height,
             framerate,
@@ -44,8 +48,8 @@ def gstreamer_pipeline(
 
 def show_camera():
     # To flip the image, modify the flip_method parameter (0 and 2 are the most common)
-    print(gstreamer_pipeline(flip_method=0))
-    cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
+    print(gstreamer_pipeline(flip_method=2))
+    cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=2), cv2.CAP_GSTREAMER)
     if cap.isOpened():
         window_handle = cv2.namedWindow("CSI Camera", cv2.WINDOW_AUTOSIZE)
         # Window
@@ -57,7 +61,7 @@ def show_camera():
                 print(context_time.elapsed)
                 
                 # This also acts as
-                keyCode = cv2.waitKey(20) & 0xFF
+                keyCode = cv2.waitKey(1) & 0xFF
             print(context_time.elapsed)
             print("---")
             # Stop the program on the ESC key

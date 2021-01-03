@@ -30,16 +30,17 @@ def read_camera(csi_camera,display_fps):
     return camera_image
 
 # Good for 1280x720
-DISPLAY_WIDTH=640
-DISPLAY_HEIGHT=360
+DISPLAY_WIDTH=320
+DISPLAY_HEIGHT=180
 # For 1920x1080
 # DISPLAY_WIDTH=960
 # DISPLAY_HEIGHT=540
 
-# 1920x1080, 30 fps
-SENSOR_MODE_1080=2
-# 1280x720, 60 fps
-SENSOR_MODE_720=3
+# 4032x3040, 30 fps
+SENSOR_MODE_4K3K=0
+
+# 1920x1080, 60 fps
+SENSOR_MODE_1080=1
 
 def face_detect():
     face_cascade = cv2.CascadeClassifier(
@@ -50,10 +51,10 @@ def face_detect():
     )
     left_camera = CSI_Camera()
     left_camera.create_gstreamer_pipeline(
-            sensor_id=0,
-            sensor_mode=SENSOR_MODE_720,
-            framerate=30,
-            flip_method=0,
+            sensor_id=1,
+            sensor_mode=SENSOR_MODE_1080,
+            framerate=60,
+            flip_method=2,
             display_height=DISPLAY_HEIGHT,
             display_width=DISPLAY_WIDTH,
     )

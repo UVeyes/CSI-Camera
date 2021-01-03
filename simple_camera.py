@@ -52,7 +52,7 @@ def show_camera():
             ret_val, img = cap.read()
             cv2.imshow("CSI Camera", img)
             # This also acts as
-            keyCode = cv2.waitKey(30) & 0xFF
+            keyCode = cv2.waitKey(5) & 0xFF
             # Stop the program on the ESC key
             if keyCode == 27:
                 break

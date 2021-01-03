@@ -17,7 +17,7 @@ import numpy as np
 
 def gstreamer_pipeline(
     sensor_id=0,
-    sensor_mode=3,
+    sensor_mode=1,
     capture_width=1280,
     capture_height=720,
     display_width=1280,
@@ -61,17 +61,17 @@ def show_camera():
             with Timer() as context_time:
                 ret_val, left_image = left_cap.read()
                 ret_val, right_image = right_cap.read()
-                # print(context_time.elapsed)
+                print(context_time.elapsed)
                 # We place both images side by side to show in the window
                 camera_images = np.hstack((left_image, right_image))
                 cv2.imshow("CSI Cameras", camera_images)
                 # cv2.imshow("CSI Camera", left_image)
-                # print(context_time.elapsed)
+                print(context_time.elapsed)
 
                 # This also acts as
-                keyCode = cv2.waitKey(20) & 0xFF
-            # print(context_time.elapsed)
-            # print("---")
+                keyCode = cv2.waitKey(1) & 0xFF
+            print(context_time.elapsed)
+            print("---")
             # Stop the program on the ESC key
             if keyCode == 27:
                 break
