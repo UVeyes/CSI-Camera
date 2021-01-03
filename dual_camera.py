@@ -102,7 +102,7 @@ class CSI_Camera:
 # Here we directly select sensor_mode 3 (1280x720, 59.9999 fps)
 def gstreamer_pipeline(
     sensor_id=0,
-    sensor_mode=3,
+    sensor_mode=1,
     capture_width=1280,
     capture_height=720,
     display_width=1280,
@@ -137,10 +137,10 @@ def start_cameras():
     left_camera.open(
         gstreamer_pipeline(
             sensor_id=0,
-            sensor_mode=3,
+            sensor_mode=1,
             flip_method=0,
-            display_height=540,
-            display_width=960,
+            display_height=270,
+            display_width=480,
         )
     )
     left_camera.start()
@@ -149,10 +149,10 @@ def start_cameras():
     right_camera.open(
         gstreamer_pipeline(
             sensor_id=1,
-            sensor_mode=3,
+            sensor_mode=1,
             flip_method=0,
-            display_height=540,
-            display_width=960,
+            display_height=270,
+            display_width=480,
         )
     )
     right_camera.start()
