@@ -129,7 +129,7 @@ class CSI_Camera:
     ):
     #wbmode=0 awblock=true aelock=true
         self._gstreamer_pipeline = (
-            "nvarguscamerasrc wbmode=0 awblock=true aelock=true sensor-id=%d sensor-mode=%d exposuretimerange=\"%d %d\" gainrange=\"%d %d\" ispdigitalgainrange=\"1 1\" aeantibanding=0 ! "
+            "nvarguscamerasrc sensor-id=%d wbmode=0 aelock=true awblock=true sensor-mode=%d exposuretimerange=\"%d %d\" gainrange=\"%d %d\"  ! "
             "video/x-raw(memory:NVMM), "
             "format=(string)NV12, framerate=(fraction)%d/1 ! "
             "nvvidconv flip-method=%d ! "

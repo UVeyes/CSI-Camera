@@ -19,13 +19,13 @@ def gstreamer_pipeline(
     sensor_mode=0,
     capture_width=480,
     capture_height=270,
-    display_width=240,
-    display_height=135,
-    framerate=30,
+    display_width=1280,
+    display_height=720,
+    framerate=60,
     flip_method=0,
 ):
     return (
-        "nvarguscamerasrc sensor-id=%d sensor-mode=%d ! "
+        "nvarguscamerasrc exposuretimerange=\"683709000 683709000\" sensor-id=%d  sensor-mode=%d  ispdigitalgainrange=\"1 1\" aelock=true gainrange=\"4 4\" wbmode=0 ! "
         "video/x-raw(memory:NVMM), "
         "width=(int)%d, height=(int)%d, "
         "format=(string)NV12, framerate=(fraction)%d/1 ! "
@@ -49,7 +49,7 @@ def gstreamer_pipeline(
 def show_camera():
     # To flip the image, modify the flip_method parameter (0 and 2 are the most common)
     print(gstreamer_pipeline(flip_method=2))
-    cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=2), cv2.CAP_GSTREAMER)
+    cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=2, framerate=30, sensor_mode=1, sensor_id=0), cv2.CAP_GSTREAMER)
     if cap.isOpened():
         window_handle = cv2.namedWindow("CSI Camera", cv2.WINDOW_AUTOSIZE)
         # Window

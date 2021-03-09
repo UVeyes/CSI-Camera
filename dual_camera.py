@@ -138,7 +138,7 @@ def start_cameras():
         gstreamer_pipeline(
             sensor_id=0,
             sensor_mode=1,
-            flip_method=0,
+            flip_method=2,
             display_height=270,
             display_width=480,
         )
@@ -150,7 +150,7 @@ def start_cameras():
         gstreamer_pipeline(
             sensor_id=1,
             sensor_mode=1,
-            flip_method=0,
+            flip_method=2,
             display_height=270,
             display_width=480,
         )

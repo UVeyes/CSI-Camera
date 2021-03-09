@@ -2,6 +2,8 @@
 use to list the supported properties:
 gst-inspect-1.0 nvarguscamerasrc
 
+gst-launch-1.0 nvarguscamerasrc exposuretimerange="333333333 333333333" wbmode=0 sensor_id=0 sensor-mode=1 ispdigitalgainrange="1 1" aelock=true gainrange="4 4" ! nvoverlaysink
+
 
 # CSI-Camera
 Simple example of using a MIPI-CSI(2) Camera (like the Raspberry Pi Version 2 camera) with the NVIDIA Jetson Nano Developer Kit. This is support code for the article on JetsonHacks: https://wp.me/p7ZgI9-19v
