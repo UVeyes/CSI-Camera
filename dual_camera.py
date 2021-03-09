@@ -16,6 +16,7 @@
 import cv2
 import threading
 import numpy as np
+import time
 
 # gstreamer_pipeline returns a GStreamer pipeline for capturing from the CSI camera
 # Flip the image by setting the flip_method (most common values: 0 and 2)
@@ -181,6 +182,9 @@ def start_cameras():
         # Stop the program on the ESC key
         if keyCode == 27:
             break
+	elif keyCode == ord('j'):
+	    timestr = time.strftime("%Y%m%d-%H%M%S.jpg")
+	    cv2.imwrite(timestr,camera_images)
 
     left_camera.stop()
     left_camera.release()
