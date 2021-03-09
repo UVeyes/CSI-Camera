@@ -136,7 +136,7 @@ def start_cameras():
     left_camera = CSI_Camera()
     left_camera.open(
         gstreamer_pipeline(
-            sensor_id=0,
+            sensor_id=1,
             sensor_mode=1,
             flip_method=2,
             display_height=270,
@@ -148,7 +148,7 @@ def start_cameras():
     right_camera = CSI_Camera()
     right_camera.open(
         gstreamer_pipeline(
-            sensor_id=1,
+            sensor_id=0,
             sensor_mode=1,
             flip_method=2,
             display_height=270,
